@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Instagram</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'gravity.css' %}"/>
+    <link rel="icon" href="{% static 'logo5.png' %}">
+    </head>
+    <body>
+        <!---navigation bar-->
+        <nav class="navbar navbar-dark bg-dark">
+            <div class ="logo">
+                <a class="active" href="https://www.instagram.com/" class="active" target="_blank"><img style="margin-top: 20px;" src="https://www.edigitalagency.com.au/wp-content/uploads/new-instagram-logo-white-border-icon-png-large.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                </img> Instagram</a>            
+            </div>
+            <ul>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#list4">Following</a></li>
+                <li><a href="#list3">Follower</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+            
+        </nav>
+        <div id="padding">
+        <!--Profile-->
+            <div class="content-with-img">
+                <div class="img" style="background: transparent url({{user_info.0}});
+                background-position: center;
+                background-size: cover;">
+                </div>
+                <h3>{{ user_info.1 }}</h3>
+                <h2>{{ user_info.2 }}</h2>
+                <p>Post --> {{ post }}</p>
+                <p>Following --> {{ follower_count }}</p>
+                <p>Follower --> {{ following_count }}</p>
+                
+            </div><br>
+    
+            <div id="list1">
+                <center>
+                    <h1>Tratior</h1>
+                
+                </center>
+                <ul id="ul">
+                    {% for var in non_followers %}
+                    <li>
+                        <img id="inim" src="{{var.2}}"/>
+                        <h3 id="headup"><a style="color: black;"href="{{var.3}}" target="blank">{{var.0}}</a></h3>
+                        <p id="small" >{{var.1}}</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div id="list2">
+                <center>
+                    <h1 style="margin-left: -30px;">Fans</h1>
+                </center>
+                <ul id="ul">
+                    {% for var in not_following %}
+                    <li>
+                        <img id="inim" src="{{var.2}}"/>
+                        <h3 id="headup"><a style="color: black;"href="{{var.3}}" target="blank">{{var.0}}</a></h3>
+                        <p id="small" >{{var.1}}</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+        
+            </div>
+            <div id="list3">
+                <center>
+                    <h1>Followers</h1>
+                </center>
+                <ul id="ul">
+                    {% for var in follower_data %}
+                    <li>
+                        <img id="inim" src="{{var.2}}"/>
+                        <h3 id="headup"><a style="color: black;"href="{{var.3}}" target="blank">{{var.0}}</a></h3>
+                        <p id="small" >{{var.1}}</p>
+                    </li>
+                    {% endfor %}
+                
+                </ul>
+        
+            </div>
+        
+            
+            <div id="list4">
+                <center>
+                    <h1 >Following</h1>
+                </center>
+                <ul id="ul">
+                    {% for var in following_data %}
+                    <li>
+                        <img id="inim" src="{{var.2}}"/>
+                        <h3 id="headup"><a style="color: black;"href="{{var.3}}" target="blank">{{var.0}}</a></h3>
+                        <p id="small" >{{var.1}}</p>
+                    </li>
+                    {% endfor %}
+                   
+                </ul>
+        
+            </div>
+        </div>
+    
+    </body>
+</html>
